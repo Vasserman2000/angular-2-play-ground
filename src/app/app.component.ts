@@ -1,10 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 
 @Component({
   selector: 'app-root',
-  templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  template: `
+          <child-one
+           [parentToChildOne]="title"></child-one>
+  `,
+  styles: []
 })
+
 export class AppComponent {
-  title = 'c';
+  title = 'שלום';
 }
