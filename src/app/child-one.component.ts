@@ -11,7 +11,11 @@ import { Component, Input, OnInit } from '@angular/core';
   })
   
   export class ChildOne implements OnInit{
+    
     @Input() parentToChildOne : string;
+    @Input() num1 : number;
+    @Input() num2 : number;
+
     title : string = 'Page' ;
     
 
