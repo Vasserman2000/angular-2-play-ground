@@ -6,7 +6,9 @@ import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter
           <span id="name">Child one says: this is from parent: {{ title }}</span> <br>
           <button (click)="sendMessageToParent()">Click me to see the message from child 1</button>
           <br>
-          <child-two [ChildOneToChildTwo]="title"></child-two>
+          <child-two [ChildOneToChildTwo]="title" #brother></child-two>
+          <br>
+          <p>{{brother.message}}</p>
     `,
     styles: ['#name {color: red; font-weight: bold;}']
   })
