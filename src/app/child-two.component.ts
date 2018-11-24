@@ -11,6 +11,7 @@ import { Component, Input, OnInit } from '@angular/core';
   export class ChildTwo implements OnInit{
     @Input() ChildOneToChildTwo : string;
     data : string = 'data' ;
+    message: string = 'Hello dear brother!! How are you?';
     
 
     ngOnInit() {
