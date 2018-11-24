@@ -6,7 +6,8 @@ import { Component, Input, OnInit } from '@angular/core';
           <child-one
            [parentToChildOne]="title"
            [num1]="x"
-           [num2]="y"></child-one>
+           [num2]="y"
+           (message)='readMessageFromChildOne($event)'></child-one>
            <br>
            <strong>X</strong>: {{x}}<br>
            <strong>Y</strong>: {{y}}
@@ -24,5 +25,9 @@ export class AppComponent {
       this.x++;
       this.y++;
     }, 1000);
+  }
+
+  readMessageFromChildOne(event) {
+    alert(event);
   }
 }

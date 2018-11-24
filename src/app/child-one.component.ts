@@ -1,9 +1,10 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
 
 @Component({
     selector: 'child-one',
     template: `
-          <span id="name">Child one says: this is from parent: {{ title }}</span>
+          <span id="name">Child one says: this is from parent: {{ title }}</span> <br>
+          <button (click)="sendMessageToParent()">Click me to see the message from child 1</button>
           <br>
           <child-two [ChildOneToChildTwo]="title"></child-two>
     `,
@@ -15,6 +16,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core
     @Input() parentToChildOne : string;
     @Input() num1 : number;
     @Input() num2 : number;
+    @Output() message = new EventEmitter<string>();
 
     title : string = 'Page' ;
     changeLog: string[] = [];
@@ -38,6 +40,11 @@ import { Component, Input, OnInit, OnChanges, SimpleChange } from '@angular/core
         }
       }
       this.changeLog.push(log.join(', '));
+    }
+
+    sendMessageToParent() {
+      
+      this.message.emit('Hello dear parent, this is the message from your first child!'); 
     }
   }
   
