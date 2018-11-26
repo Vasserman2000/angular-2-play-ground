@@ -1,4 +1,5 @@
-import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter } from '@angular/core';
+import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter, ViewChild } from '@angular/core';
+import { ChildTwo } from './child-two.component';
 
 @Component({
     selector: 'child-one',
@@ -9,6 +10,7 @@ import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter
           <child-two [ChildOneToChildTwo]="title" #brother></child-two>
           <br>
           <p>{{brother.message}}</p>
+          <p>Sum result from brother component: {{sumResult}}
     `,
     styles: ['#name {color: red; font-weight: bold;}']
   })
@@ -19,14 +21,21 @@ import { Component, Input, OnInit, OnChanges, SimpleChange, Output, EventEmitter
     @Input() num1 : number;
     @Input() num2 : number;
     @Output() message = new EventEmitter<string>();
+    @ViewChild(ChildTwo) private brother: ChildTwo;
+    sumResult: number;
 
     title : string = 'Page' ;
     changeLog: string[] = [];
     
+    constructor() {
+
+    }
 
     ngOnInit() {
         this.title = this.parentToChildOne;
         console.log(this.title);
+
+        this.sumResult = this.brother.sum(8, 13);
     }
 
     ngOnChanges(changes: {[propKey: string]: SimpleChange}) {

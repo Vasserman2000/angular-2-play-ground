@@ -17,5 +17,13 @@ import { Component, Input, OnInit } from '@angular/core';
     ngOnInit() {
         this.data = this.ChildOneToChildTwo;
     }
+
+    sum (num1: number, num2: number) : number {
+        if (num1 && num2) {
+            return num1 + num2;
+        } else {
+            return 0;
+        }
+    }
   }
   
